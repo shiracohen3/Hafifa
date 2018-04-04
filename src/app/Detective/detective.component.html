@@ -1,0 +1,21 @@
+
+  <li id={{detective.id}} class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <div class="container">
+        <span class="mdl-list__item-text-body">
+          <span [hidden]="!notEditMode" class="name">{{detective.name}}</span>
+          <input [hidden]="notEditMode" type="text" [(ngModel)]="detective.name">
+          <br>
+          היכולת המיוחדת של הבלש היא:
+          {{detective.spec}}
+          <br>
+                מספר המקרים שהבלש פתר: {{detective.cases}}
+          <div class="actions">
+            <i class="material-icons edit" dir="ltr" (click)="editName($event, detective.id)">mode_edit</i>
+            <i class="material-icons delete" dir="ltr" (click)="removeDetective($event, detective)">delete</i>
+          </div>
+        </span>
+        </div>
+      </span>
+  </li>
+

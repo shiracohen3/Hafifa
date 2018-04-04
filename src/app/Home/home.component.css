@@ -1,0 +1,15 @@
+.addContainer{
+  position: relative;
+  height: 60px;
+}
+.add {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  size: 10px;
+}
+
+ul {
+  margin-top: 0px;
+}
+

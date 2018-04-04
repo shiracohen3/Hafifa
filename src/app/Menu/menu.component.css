@@ -1,0 +1,21 @@
+:host {
+  background: rgba(181, 43, 226, 0.91);
+  color: #fff;
+  position: fixed;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 15%;
+  min-width: 170px;
+  z-index: 9999;
+  font-family: Alef;
+}
+
+ul {
+  font-size: 18px;
+  line-height: 2;
+  /*font-weight: 400;*/
+  /*padding-top: 50px;*/
+  list-style: none;
+}

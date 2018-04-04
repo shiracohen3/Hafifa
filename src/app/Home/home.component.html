@@ -1,0 +1,14 @@
+<main class="content">
+  <h3 class="title">{{title}}</h3>
+
+  <ul class="demo-list-three mdl-list">
+    <div *ngFor="let detective of detectives">
+      <detective-details [detective]="detective" [detectives]="detectives">
+      </detective-details>
+    </div>
+  </ul>
+
+  <app-add-detective></app-add-detective>
+</main>
+
+
