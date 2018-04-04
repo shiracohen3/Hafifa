@@ -17,6 +17,7 @@ var cases_component_1 = require("./Case/cases.component");
 var home_component_1 = require("./Home/home.component");
 var menu_component_1 = require("./Menu/menu.component");
 var animations_1 = require("@angular/platform-browser/animations");
+var detective_service_1 = require("./Services/detective.service");
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'cases', component: cases_component_1.CasesComponent },
@@ -41,7 +42,7 @@ var AppModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 animations_1.BrowserAnimationsModule
             ],
-            providers: [],
+            providers: [detective_service_1.DetectiveService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

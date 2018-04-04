@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Detective} from '../Detective/Detective';
+import { DetectiveService } from '../Services/detective.service';
 
 @Component({
   selector: 'app-home',
@@ -7,23 +8,16 @@ import {Detective} from '../Detective/Detective';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  detectives: Detective[];
+  constructor(private detectiveService: DetectiveService) {}
 
   title = 'ברוכים הבאים לעולם הבלשים';
-  detectives: Detective[] = [
-    {
-      id: 1,
-      name: 'חושחש הבלש',
-      spec: 'מעקב',
-      cases: 5
-    },
-    {
-      id: 2,
-      name: 'הבלש הרלש',
-      spec: 'חדות הבחנה',
-      cases: 8
-    }
-  ];
+  getDetective(): void {
+    this.detectiveService.getDetectives()
+      .subscribe(detectives => this.detectives = detectives);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getDetective();
+  }
 }

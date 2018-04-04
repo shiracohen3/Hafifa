@@ -10,15 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var animations_1 = require("@angular/animations");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
+        this.menuState = 'out';
     }
+    AppComponent.prototype.toggleMenu = function () {
+        this.menuState = this.menuState === 'out' ? 'in' : 'out';
+    };
     AppComponent.prototype.ngOnInit = function () { };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',
             templateUrl: './app.component.html',
-            styleUrls: []
+            styleUrls: ['./app.component.css'],
+            animations: [
+                animations_1.trigger('slideInOut', [
+                    animations_1.state('in', animations_1.style({
+                        transform: 'translate3d(0, 0, 0)'
+                    })),
+                    animations_1.state('out', animations_1.style({
+                        transform: 'translate3d(100%, 0, 0)'
+                    })),
+                    animations_1.transition('in => out', animations_1.animate('400ms ease-in-out')),
+                    animations_1.transition('out => in', animations_1.animate('400ms ease-in-out'))
+                ]),
+            ]
         }),
         __metadata("design:paramtypes", [])
     ], AppComponent);

@@ -10,6 +10,7 @@ import { CasesComponent } from './Case/cases.component';
 import { HomeComponent} from './Home/home.component';
 import { MenuComponent} from './Menu/menu.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {DetectiveService} from "./Services/detective.service";
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DetectiveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

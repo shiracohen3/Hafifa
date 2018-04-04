@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Detective_1 = require("./Detective");
+var detective_service_1 = require("../Services/detective.service");
 var DetectiveComponent = /** @class */ (function () {
-    function DetectiveComponent() {
+    function DetectiveComponent(detectiveService) {
+        this.detectiveService = detectiveService;
         this.notEditMode = true;
     }
     DetectiveComponent.prototype.editName = function (event, id) {
@@ -26,10 +28,7 @@ var DetectiveComponent = /** @class */ (function () {
         }
     };
     DetectiveComponent.prototype.removeDetective = function (event, detectiveToRemove) {
-        var index = this.detectives.indexOf(detectiveToRemove, 0);
-        if (index > -1) {
-            this.detectives.splice(index, 1);
-        }
+        this.detectiveService.deleteDetective(detectiveToRemove).subscribe(function (error) { return alert("קרתה שגיאה בזמן מחיקת הבלש"); });
     };
     DetectiveComponent.prototype.ngOnInit = function () { };
     __decorate([
@@ -46,7 +45,7 @@ var DetectiveComponent = /** @class */ (function () {
             templateUrl: './detective.component.html',
             styleUrls: ['./detective.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [detective_service_1.DetectiveService])
     ], DetectiveComponent);
     return DetectiveComponent;
 }());

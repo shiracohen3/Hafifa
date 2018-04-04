@@ -1,6 +1,6 @@
 <div class="main">
   <div class="menu">
-    <i class="material-icons" (click)="toggleMenu()">menu</i>
+    <i class="material-icons menuIcon" (click)="toggleMenu()">menu</i>
   </div>
   <router-outlet></router-outlet>
   <app-menu (toggleMenu)="toggleMenu($event)" [@slideInOut]="menuState"></app-menu>

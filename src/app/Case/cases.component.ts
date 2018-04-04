@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Case } from './Case';
 
 @Component({
   selector: 'app-cases',
@@ -9,6 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class CasesComponent implements OnInit {
   constructor() {
   }
-
+  title = 'תיקים';
+  cases: Case[] = [
+    {
+      name: 'תיק התיקים',
+      description: 'זהו תיאור מאוד מאוד יפה וארוך',
+      level: 5
+    },
+    {
+      name: 'גניבה',
+      description: 'זהו תיק שנפתח בעקבות גניבה חמורה ביותר',
+      level: 8
+    }
+  ];
   ngOnInit() {}
 }

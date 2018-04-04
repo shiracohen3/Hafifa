@@ -1,12 +1,13 @@
 <div>
-  <h3>כאן אפשר להוסיף בלש</h3>
-  <input type="text" placeholder="שם הבלש">
-  <input type="text" placeholder="יכולת מיוחדת">
-  <input type="number" placeholder="נסיון">
-  <br>
+  <h3>{{title}}</h3>
+  <div class="details">
+    <input id="newName" type="text" placeholder="שם הבלש">
+    <input id="newSpec" type="text" placeholder="יכולת מיוחדת">
+    <input id="newCases" type="number" placeholder="נסיון">
+  </div>
 </div>
 <div class="addContainer">
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect add" (click)="addNewDetective()">
     <i class="material-icons">add</i>
   </button>
 </div>

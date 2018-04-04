@@ -19,3 +19,7 @@ ul {
   /*padding-top: 50px;*/
   list-style: none;
 }
+
+span {
+  cursor: pointer;
+}

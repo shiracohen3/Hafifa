@@ -10,32 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var detective_service_1 = require("../Services/detective.service");
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent() {
+    function HomeComponent(detectiveService) {
+        this.detectiveService = detectiveService;
         this.title = 'ברוכים הבאים לעולם הבלשים';
-        this.detectives = [
-            {
-                id: 1,
-                name: 'חושחש הבלש',
-                spec: 'מעקב',
-                cases: 5
-            },
-            {
-                id: 2,
-                name: 'הבלש הרלש',
-                spec: 'חדות הבחנה',
-                cases: 8
-            }
-        ];
     }
-    HomeComponent.prototype.ngOnInit = function () { };
+    HomeComponent.prototype.getDetective = function () {
+        var _this = this;
+        this.detectiveService.getDetectives()
+            .subscribe(function (detectives) { return _this.detectives = detectives; });
+    };
+    HomeComponent.prototype.ngOnInit = function () {
+        this.getDetective();
+    };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'app-home',
             templateUrl: './home.component.html',
             styleUrls: ['./home.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [detective_service_1.DetectiveService])
     ], HomeComponent);
     return HomeComponent;
 }());

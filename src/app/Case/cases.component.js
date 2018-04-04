@@ -12,6 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var CasesComponent = /** @class */ (function () {
     function CasesComponent() {
+        this.title = 'תיקים';
+        this.cases = [
+            {
+                name: 'תיק התיקים',
+                description: 'זהו תיאור מאוד מאוד יפה וארוך',
+                level: 5
+            },
+            {
+                name: 'גניבה',
+                description: 'זהו תיק שנפתח בעקבות גניבה חמורה ביותר',
+                level: 8
+            }
+        ];
     }
     CasesComponent.prototype.ngOnInit = function () { };
     CasesComponent = __decorate([

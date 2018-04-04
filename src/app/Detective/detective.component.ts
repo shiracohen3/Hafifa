@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Detective} from './Detective';
+import {DetectiveService} from "../Services/detective.service";
 
 @Component({
   selector: 'detective-details',
@@ -10,7 +11,7 @@ export class DetectiveComponent implements OnInit {
   @Input() detective: Detective;
   @Input() detectives: Detective[];
 
-  constructor() {}
+  constructor(private detectiveService: DetectiveService) {}
 
   notEditMode = true;
   public editName(event, id) {
@@ -24,10 +25,7 @@ export class DetectiveComponent implements OnInit {
   }
 
   public removeDetective(event, detectiveToRemove) {
-    const index = this.detectives.indexOf(detectiveToRemove, 0);
-    if (index >  -1) {
-      this.detectives.splice(index, 1);
-    }
+    this.detectiveService.deleteDetective(detectiveToRemove).subscribe(success => alert("הבלש נמחק בהצלחה"));
   }
 
   ngOnInit() {}

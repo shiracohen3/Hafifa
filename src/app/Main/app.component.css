@@ -1,4 +1,7 @@
 .menu {
-  cursor: pointer;
   padding: 10px;
+}
+
+.menuIcon {
+  cursor: pointer;
 }

@@ -5,6 +5,31 @@
     <title>Cases</title>
 </head>
 <body>
-  ברוכים הבאים למסך התיקים
+  <h3>{{title}}</h3>
+  <ul class="demo-list-three mdl-list">
+    <div *ngFor="let case of cases">
+      <li class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <div class="container">
+        <span class="mdl-list__item-text-body">
+          <span class="name">{{case.name}}</span>
+          <!--<input [hidden]="notEditMode" type="text" [(ngModel)]="case.name">-->
+          <br>
+        תיאור התיק:
+          {{case.description}}
+          <br>
+               רמת הקושי של התיק: {{case.level}}
+          <div class="actions">
+            <i class="material-icons edit" dir="ltr">mode_edit</i>
+            <i class="material-icons delete" dir="ltr">delete</i>
+          </div>
+        </span>
+        </div>
+      </span>
+      </li>
+    </div>
+  </ul>
+
+
 </body>
 </html>
