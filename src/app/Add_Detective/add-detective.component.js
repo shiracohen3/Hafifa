@@ -23,8 +23,14 @@ var AddDetectiveComponent = /** @class */ (function () {
         var newDetecSpec = document.getElementById("newSpec").value;
         var newDetecCases = document.getElementById("newCases").value;
         var newDetective = new Detective_1.Detective(this.nextDetecId, newDetecName, newDetecSpec, Number(newDetecCases));
-        this.detectiveService.addDetective(newDetective).subscribe(function (error) { return alert("קרתה שגיאה בהוספת הבלש"); });
+        this.detectiveService.addDetective(newDetective).subscribe(function (success) { return alert("הבלש התווסף בהצלחה"); });
         this.nextDetecId++;
+        this.clearInputText();
+    };
+    AddDetectiveComponent.prototype.clearInputText = function () {
+        document.getElementById("newName").value = '';
+        document.getElementById("newSpec").value = '';
+        document.getElementById("newCases").value = '';
     };
     AddDetectiveComponent = __decorate([
         core_1.Component({

@@ -18,6 +18,7 @@ var DetectiveComponent = /** @class */ (function () {
         this.notEditMode = true;
     }
     DetectiveComponent.prototype.editName = function (event, id) {
+        debugger;
         if (this.notEditMode) {
             this.notEditMode = false;
             document.getElementById(id).getElementsByClassName('edit')[0].innerHTML = 'save';
@@ -25,10 +26,14 @@ var DetectiveComponent = /** @class */ (function () {
         else {
             this.notEditMode = true;
             document.getElementById(id).getElementsByClassName('edit')[0].innerHTML = 'mode_edit';
+            this.editDetective();
         }
     };
+    DetectiveComponent.prototype.editDetective = function () {
+        this.detectiveService.editDetective(this.detective).subscribe(function (success) { return alert("הבלש עודכן בהצלחה!"); });
+    };
     DetectiveComponent.prototype.removeDetective = function (event, detectiveToRemove) {
-        this.detectiveService.deleteDetective(detectiveToRemove).subscribe(function (error) { return alert("קרתה שגיאה בזמן מחיקת הבלש"); });
+        this.detectiveService.deleteDetective(detectiveToRemove).subscribe(function (success) { return alert("הבלש נמחק בהצלחה"); });
     };
     DetectiveComponent.prototype.ngOnInit = function () { };
     __decorate([

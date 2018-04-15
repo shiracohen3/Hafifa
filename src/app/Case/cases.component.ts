@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Case } from './Case';
+import {CasesService} from "../Services/cases.service";
 
 @Component({
   selector: 'app-cases',
@@ -8,20 +9,17 @@ import { Case } from './Case';
 })
 
 export class CasesComponent implements OnInit {
-  constructor() {
-  }
+  cases: Case[];
+  constructor(private casesService: CasesService) {}
   title = 'תיקים';
-  cases: Case[] = [
-    {
-      name: 'תיק התיקים',
-      description: 'זהו תיאור מאוד מאוד יפה וארוך',
-      level: 5
-    },
-    {
-      name: 'גניבה',
-      description: 'זהו תיק שנפתח בעקבות גניבה חמורה ביותר',
-      level: 8
-    }
-  ];
-  ngOnInit() {}
+
+  getCases(): void {
+    this.cases = Array(4);
+    this.casesService.getCases()
+      .subscribe(cases => this.cases = cases);
+  }
+
+  ngOnInit() {
+    this.getCases();
+  }
 }

@@ -37,8 +37,23 @@ var DetectiveService = /** @class */ (function () {
     DetectiveService.prototype.deleteDetective = function (deleteDetective) {
         var index = this.detectives.indexOf(deleteDetective, 0);
         if (index > -1) {
-            return of_1.of(this.detectives.splice(index, 1));
+            this.detectives.splice(index, 1);
+            return of_1.of(true);
         }
+        return of_1.of(false);
+    };
+    DetectiveService.prototype.editDetective = function (editDetective) {
+        // Not realy used because the detectives list already update
+        var wasEdited = false;
+        this.detectives.forEach(function (detective) {
+            if (detective.id === editDetective.id) {
+                detective.name = editDetective.name;
+                detective.spec = editDetective.spec;
+                detective.cases = editDetective.cases;
+                wasEdited = true;
+            }
+        });
+        return of_1.of(wasEdited);
     };
     DetectiveService = __decorate([
         core_1.Injectable(),

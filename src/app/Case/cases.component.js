@@ -10,30 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var cases_service_1 = require("../Services/cases.service");
 var CasesComponent = /** @class */ (function () {
-    function CasesComponent() {
+    function CasesComponent(casesService) {
+        this.casesService = casesService;
         this.title = 'תיקים';
-        this.cases = [
-            {
-                name: 'תיק התיקים',
-                description: 'זהו תיאור מאוד מאוד יפה וארוך',
-                level: 5
-            },
-            {
-                name: 'גניבה',
-                description: 'זהו תיק שנפתח בעקבות גניבה חמורה ביותר',
-                level: 8
-            }
-        ];
     }
-    CasesComponent.prototype.ngOnInit = function () { };
+    CasesComponent.prototype.getCases = function () {
+        var _this = this;
+        this.casesService.getCases()
+            .subscribe(function (cases) { return _this.cases = cases; });
+    };
+    CasesComponent.prototype.ngOnInit = function () {
+        this.getCases();
+    };
     CasesComponent = __decorate([
         core_1.Component({
             selector: 'app-cases',
             templateUrl: './case.component.html',
             styleUrls: ['./case.component.css']
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [cases_service_1.CasesService])
     ], CasesComponent);
     return CasesComponent;
 }());

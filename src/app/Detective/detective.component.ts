@@ -15,13 +15,19 @@ export class DetectiveComponent implements OnInit {
 
   notEditMode = true;
   public editName(event, id) {
+    debugger;
     if (this.notEditMode) {
       this.notEditMode = false;
       document.getElementById(id).getElementsByClassName('edit')[0].innerHTML = 'save';
     } else {
       this.notEditMode = true;
       document.getElementById(id).getElementsByClassName('edit')[0].innerHTML = 'mode_edit';
+      this.editDetective();
     }
+  }
+
+  public editDetective() {
+    this.detectiveService.editDetective(this.detective).subscribe(success => alert("הבלש עודכן בהצלחה!"));
   }
 
   public removeDetective(event, detectiveToRemove) {
