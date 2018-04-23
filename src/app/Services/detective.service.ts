@@ -21,6 +21,12 @@ export class DetectiveService {
         name: 'הבלש הרלש',
         spec: 'חדות הבחנה',
         cases: 8
+      },
+      {
+        id: 3,
+        name: 'שירה שירה',
+        spec: 'ניסיון',
+        cases: 12
       }
     ];
   }
