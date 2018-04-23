@@ -1,0 +1,22 @@
+<div>
+  <form [formGroup]="form" (ngSubmit)="submit(form)">
+    <h2 mat-dialog-title>כותרת</h2>
+
+    <mat-dialog-content>
+      <mat-form-field>
+        <input matInput formControlName="name" placeholder="Enter name">
+        <!--<mat-select placeholder="Favorite food">-->
+          <!--<mat-option *ngFor="let food of foods" [value]="food.value">-->
+            <!--{{ food.viewValue }}-->
+          <!--</mat-option>-->
+        <!--</mat-select>-->
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      <button class="mat-raised-button"(click)="close()" mat-dialog-close>Close</button>
+      <button type="submit" class="mat-raised-button mat-primary">Save</button>
+    </mat-dialog-actions>
+  </form>
+</div>
+

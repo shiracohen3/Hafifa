@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './Main/app.component';
@@ -12,6 +12,8 @@ import { MenuComponent} from './Menu/menu.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {DetectiveService} from "./Services/detective.service";
 import {CasesService} from "./Services/cases.service";
+import {SolveCaseComponent} from "./Case/solveCase.component";
+import {MatDialogModule} from '@angular/material';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     AddDetectiveComponent,
     DetectiveComponent,
     CasesComponent,
-    MenuComponent
+    MenuComponent,
+    SolveCaseComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -34,8 +37,12 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  entryComponents: [SolveCaseComponent],
   providers: [DetectiveService,
               CasesService],
   bootstrap: [AppComponent]

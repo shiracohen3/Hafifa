@@ -18,6 +18,9 @@ var home_component_1 = require("./Home/home.component");
 var menu_component_1 = require("./Menu/menu.component");
 var animations_1 = require("@angular/platform-browser/animations");
 var detective_service_1 = require("./Services/detective.service");
+var cases_service_1 = require("./Services/cases.service");
+var solveCase_component_1 = require("./Case/solveCase.component");
+var material_1 = require("@angular/material");
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'cases', component: cases_component_1.CasesComponent },
@@ -34,15 +37,21 @@ var AppModule = /** @class */ (function () {
                 add_detective_component_1.AddDetectiveComponent,
                 detective_component_1.DetectiveComponent,
                 cases_component_1.CasesComponent,
-                menu_component_1.MenuComponent
+                menu_component_1.MenuComponent,
+                solveCase_component_1.SolveCaseComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes),
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                animations_1.BrowserAnimationsModule
+                animations_1.BrowserAnimationsModule,
+                material_1.MatDialogModule,
+                forms_1.ReactiveFormsModule
             ],
-            providers: [detective_service_1.DetectiveService],
+            schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA],
+            entryComponents: [solveCase_component_1.SolveCaseComponent],
+            providers: [detective_service_1.DetectiveService,
+                cases_service_1.CasesService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

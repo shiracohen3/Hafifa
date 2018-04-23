@@ -23,6 +23,21 @@ var CasesService = /** @class */ (function () {
                 name: 'גניבה',
                 description: 'זהו תיק שנפתח בעקבות גניבה חמורה ביותר',
                 level: 8
+            },
+            {
+                name: 'רצח',
+                description: 'זהו תיק שנפתח בעקבות רצח המוני',
+                level: 2
+            },
+            {
+                name: 'פגע וברח',
+                description: 'מקרה של תאונת פגע וברח',
+                level: 1
+            },
+            {
+                name: 'לא ידוע',
+                description: 'התיק עדיין נבדק',
+                level: 8
             }
         ];
     }
