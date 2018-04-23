@@ -33,6 +33,7 @@ var SolveCaseComponent = /** @class */ (function () {
         });
     };
     SolveCaseComponent.prototype.submit = function (form) {
+        alert('submit');
         this.dialogRef.close('$form.value');
     };
     SolveCaseComponent = __decorate([
