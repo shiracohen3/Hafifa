@@ -1,0 +1,19 @@
+<div>
+  <h3>{{title}}</h3>
+  <div class="details" dir="rtl">
+    <table class="example-full-width" cellspacing="1"><tr>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="שם הבלש" id="newName">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="יכולת מיוחדת" id="newSpec">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <input matInput #postalCode maxlength="5"  placeholder="נסיון" id="newCases">
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+      </mat-form-field></td>
+    </tr></table>
+    <button mat-raised-button (click)="addNewDetective()">הוסף!</button>
+  </div>
+</div>
+

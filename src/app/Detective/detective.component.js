@@ -18,7 +18,6 @@ var DetectiveComponent = /** @class */ (function () {
         this.notEditMode = true;
     }
     DetectiveComponent.prototype.editName = function (event, id) {
-        debugger;
         if (this.notEditMode) {
             this.notEditMode = false;
             document.getElementById(id).getElementsByClassName('edit')[0].innerHTML = 'save';
@@ -40,10 +39,6 @@ var DetectiveComponent = /** @class */ (function () {
         core_1.Input(),
         __metadata("design:type", Detective_1.Detective)
     ], DetectiveComponent.prototype, "detective", void 0);
-    __decorate([
-        core_1.Input(),
-        __metadata("design:type", Array)
-    ], DetectiveComponent.prototype, "detectives", void 0);
     DetectiveComponent = __decorate([
         core_1.Component({
             selector: 'detective-details',

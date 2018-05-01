@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var cases_service_1 = require("../Services/cases.service");
-var solveCase_component_1 = require("./solveCase.component");
+var solveCase_component_1 = require("../SolveCase/solveCase.component");
 var material_1 = require("@angular/material");
+var detective_service_1 = require("../Services/detective.service");
 var CasesComponent = /** @class */ (function () {
-    function CasesComponent(casesService, dialog) {
+    function CasesComponent(casesService, detectiveService, dialog) {
         this.casesService = casesService;
+        this.detectiveService = detectiveService;
         this.dialog = dialog;
         this.title = 'תיקים';
     }
@@ -25,23 +27,32 @@ var CasesComponent = /** @class */ (function () {
         this.casesService.getCases()
             .subscribe(function (cases) { return _this.cases = cases; });
     };
-    CasesComponent.prototype.openDialog = function () {
+    CasesComponent.prototype.getDetectives = function () {
+        var _this = this;
+        this.detectiveService.getDetectives()
+            .subscribe(function (detectives) { return _this.detectives = detectives; });
+    };
+    CasesComponent.prototype.openDialog = function (currCase) {
+        var _this = this;
         var dialogConfig = new material_1.MatDialogConfig();
         dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        // dialogConfig.minHeight = '400px';
-        // dialogConfig.minWidth = '60px';
-        dialogConfig.height = '400px';
-        dialogConfig.width = '600px';
-        dialogConfig.position = { top: '50px', left: '50px' };
-        dialogConfig.disableClose = true;
+        dialogConfig.height = '300px';
+        dialogConfig.width = '300px';
         var dialogRef = this.dialog.open(solveCase_component_1.SolveCaseComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(function (result) {
-            console.log('Dialog closed: ', result);
+        dialogRef.componentInstance.detectives = this.detectives;
+        dialogRef.componentInstance.currCase = currCase;
+        dialogRef.afterClosed().subscribe(function (detectivesSolveCase) {
+            var self = _this;
+            detectivesSolveCase.forEach(function (detec) {
+                detec.cases += 1;
+                self.detectiveService.editDetective(detec);
+            });
+            _this.casesService.deleteCase(currCase);
         });
     };
     CasesComponent.prototype.ngOnInit = function () {
         this.getCases();
+        this.getDetectives();
     };
     CasesComponent = __decorate([
         core_1.Component({
@@ -49,7 +60,7 @@ var CasesComponent = /** @class */ (function () {
             templateUrl: './case.component.html',
             styleUrls: ['./case.component.css']
         }),
-        __metadata("design:paramtypes", [cases_service_1.CasesService, material_1.MatDialog])
+        __metadata("design:paramtypes", [cases_service_1.CasesService, detective_service_1.DetectiveService, material_1.MatDialog])
     ], CasesComponent);
     return CasesComponent;
 }());

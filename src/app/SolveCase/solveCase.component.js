@@ -13,28 +13,23 @@ var core_1 = require("@angular/core");
 var material_1 = require("@angular/material");
 var forms_1 = require("@angular/forms");
 var SolveCaseComponent = /** @class */ (function () {
-    function SolveCaseComponent(dialogRef, formBuilder) {
+    function SolveCaseComponent(dialogRef) {
         this.dialogRef = dialogRef;
-        this.formBuilder = formBuilder;
+        this.detectivesForCheck = [];
+        this.canSolveCase = false;
     }
-    SolveCaseComponent.prototype.changePosition = function () {
-        this.dialogRef.updatePosition({ top: '50px', left: '50px' });
-    };
-    ;
-    SolveCaseComponent.prototype.save = function () {
-        this.dialogRef.close('hiiii');
-    };
     SolveCaseComponent.prototype.close = function () {
         this.dialogRef.close();
     };
-    SolveCaseComponent.prototype.ngOnInit = function () {
-        this.form = this.formBuilder.group({
-            name: ''
-        });
+    SolveCaseComponent.prototype.submit = function () {
+        this.dialogRef.close(this.form.get('chooseDetectives').value);
     };
-    SolveCaseComponent.prototype.submit = function (form) {
-        alert('submit');
-        this.dialogRef.close('$form.value');
+    SolveCaseComponent.prototype.ngOnInit = function () {
+        this.form = new forms_1.FormGroup({
+            caseName: new forms_1.FormControl(this.caseName, [forms_1.Validators.required, forms_1.Validators.pattern('\\w+-\\d+$')]),
+            chooseDetectives: new forms_1.FormControl(this.chooseDetectives, [forms_1.Validators.required,
+                forms_1.Validators.maxLength(4)])
+        });
     };
     SolveCaseComponent = __decorate([
         core_1.Component({
@@ -42,7 +37,7 @@ var SolveCaseComponent = /** @class */ (function () {
             templateUrl: './solveCase.component.html',
             styleUrls: []
         }),
-        __metadata("design:paramtypes", [material_1.MatDialogRef, forms_1.FormBuilder])
+        __metadata("design:paramtypes", [material_1.MatDialogRef])
     ], SolveCaseComponent);
     return SolveCaseComponent;
 }());

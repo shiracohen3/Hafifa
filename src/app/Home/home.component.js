@@ -11,15 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var detective_service_1 = require("../Services/detective.service");
+var superDetective_1 = require("../SuperDetective/superDetective");
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(detectiveService) {
         this.detectiveService = detectiveService;
         this.title = 'ברוכים הבאים לעולם הבלשים';
     }
     HomeComponent.prototype.getDetective = function () {
-        var _this = this;
+        var self = this;
         this.detectiveService.getDetectives()
-            .subscribe(function (detectives) { return _this.detectives = detectives; });
+            .subscribe(function (detectives) {
+            detectives.forEach(function (detective) {
+                if (detective instanceof superDetective_1.superDetective) {
+                    self.superDetective.push(detective);
+                }
+                else {
+                    self.detectives.push(detective);
+                }
+            });
+        });
     };
     HomeComponent.prototype.ngOnInit = function () {
         this.getDetective();

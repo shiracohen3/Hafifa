@@ -10,29 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var Detective_1 = require("../Detective/Detective");
 var of_1 = require("rxjs/observable/of");
+var superDetective_1 = require("../SuperDetective/superDetective");
 var DetectiveService = /** @class */ (function () {
     function DetectiveService() {
-        this.detectives = [
-            {
-                id: 1,
-                name: 'חושחש הבלש',
-                spec: 'מעקב',
-                cases: 5
-            },
-            {
-                id: 2,
-                name: 'הבלש הרלש',
-                spec: 'חדות הבחנה',
-                cases: 8
-            },
-            {
-                id: 3,
-                name: 'שירה שירה',
-                spec: 'ניסיון',
-                cases: 12
-            }
-        ];
+        this.detectives = [new Detective_1.Detective(1, 'חושחש הבלש', 'מעקב', 5),
+            new Detective_1.Detective(2, 'הבלש הרלש', 'חדות הבחנה', 8),
+            new Detective_1.Detective(3, 'שירה שירה', 'ניסיון', 12),
+            new superDetective_1.superDetective(2, 'בלש כוכב', 'מיומנות אדירה', 20)];
     }
     DetectiveService.prototype.getDetectives = function () {
         return of_1.of(this.detectives);

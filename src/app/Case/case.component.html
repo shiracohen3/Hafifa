@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cases</title>
-</head>
-<body>
-  <h3>{{title}}</h3>
+ <h3>{{title}}</h3>
   <ul class="demo-list-three mdl-list">
-    <div *ngFor="let case of cases">
+    <div *ngFor="let case of cases | slice:0:4">
       <li class="mdl-list__item mdl-list__item--three-line case">
       <span class="mdl-list__item-primary-content">
         <div class="container">
@@ -20,7 +13,7 @@
           <br>
                רמת הקושי של התיק: {{case.level}}
           <div class="solveCsse">
-            <button mat-button (click)="openDialog()">פתור תיק</button>
+            <button mat-button (click)="openDialog(case)">פתור תיק</button>
           </div>
           <div class="actions">
             <i class="material-icons edit" dir="ltr">mode_edit</i>
@@ -32,7 +25,3 @@
       </li>
     </div>
   </ul>
-
-
-</body>
-</html>

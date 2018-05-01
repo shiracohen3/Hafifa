@@ -4,31 +4,16 @@ import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
 import index from "@angular/cli/lib/cli";
 import {forEach} from "@angular/router/src/utils/collection";
+import {superDetective} from "../SuperDetective/superDetective";
 
 @Injectable()
 export class DetectiveService {
   private detectives: Detective[];
   constructor() {
-    this.detectives = [
-      {
-        id: 1,
-        name: 'חושחש הבלש',
-        spec: 'מעקב',
-        cases: 5
-      },
-      {
-        id: 2,
-        name: 'הבלש הרלש',
-        spec: 'חדות הבחנה',
-        cases: 8
-      },
-      {
-        id: 3,
-        name: 'שירה שירה',
-        spec: 'ניסיון',
-        cases: 12
-      }
-    ];
+    this.detectives = [ new Detective(1, 'חושחש הבלש', 'מעקב', 5),
+      new Detective(2, 'הבלש הרלש', 'חדות הבחנה', 8),
+      new Detective(3, 'שירה שירה', 'ניסיון', 12),
+      new superDetective(2, 'בלש כוכב', 'מיומנות אדירה', 20)];
   }
   getDetectives(): Observable<Detective[]> {
     return of(this.detectives);

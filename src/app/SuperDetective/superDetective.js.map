@@ -1,0 +1,1 @@
+{"version":3,"file":"superDetective.js","sourceRoot":"","sources":["superDetective.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,oDAAiD;AAEjD;IAAoC,kCAAS;IAE3C,wBAAY,OAAe,EAAE,SAAiB,EAAE,SAAiB,EAAE,UAAkB;eACnF,kBAAM,OAAO,EAAC,SAAS,EAAC,SAAS,EAAC,UAAU,CAAC;IAC/C,CAAC;IAEM,yCAAgB,GAAvB;QACE,MAAM,CAAC,QAAQ,CAAC;IAClB,CAAC;IACH,qBAAC;AAAD,CAAC,AATD,CAAoC,qBAAS,GAS5C;AATY,wCAAc"}

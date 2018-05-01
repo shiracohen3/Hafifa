@@ -11,7 +11,7 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./Main/app.component");
-var add_detective_component_1 = require("./Add_Detective/add-detective.component");
+var add_detective_component_1 = require("./AddDetective/add-detective.component");
 var detective_component_1 = require("./Detective/detective.component");
 var cases_component_1 = require("./Case/cases.component");
 var home_component_1 = require("./Home/home.component");
@@ -19,8 +19,10 @@ var menu_component_1 = require("./Menu/menu.component");
 var animations_1 = require("@angular/platform-browser/animations");
 var detective_service_1 = require("./Services/detective.service");
 var cases_service_1 = require("./Services/cases.service");
-var solveCase_component_1 = require("./Case/solveCase.component");
+var solveCase_component_1 = require("./SolveCase/solveCase.component");
 var material_1 = require("@angular/material");
+var forbiddenSolveCase_directive_1 = require("./SolveCase/forbiddenSolveCase.directive");
+var super_detective_component_1 = require("./SuperDetective/super-detective.component");
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'cases', component: cases_component_1.CasesComponent },
@@ -38,7 +40,9 @@ var AppModule = /** @class */ (function () {
                 detective_component_1.DetectiveComponent,
                 cases_component_1.CasesComponent,
                 menu_component_1.MenuComponent,
-                solveCase_component_1.SolveCaseComponent
+                forbiddenSolveCase_directive_1.ForbiddenValidatorDirective,
+                solveCase_component_1.SolveCaseComponent,
+                super_detective_component_1.SuperDetectiveComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes),
@@ -46,7 +50,13 @@ var AppModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 animations_1.BrowserAnimationsModule,
                 material_1.MatDialogModule,
-                forms_1.ReactiveFormsModule
+                forms_1.ReactiveFormsModule,
+                material_1.MatSelectModule,
+                material_1.MatFormFieldModule,
+                material_1.MatOptionModule,
+                material_1.MatButtonModule,
+                material_1.MatCheckboxModule,
+                material_1.MatInputModule
             ],
             schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA],
             entryComponents: [solveCase_component_1.SolveCaseComponent],

@@ -9,13 +9,11 @@ import {DetectiveService} from "../Services/detective.service";
 })
 export class DetectiveComponent implements OnInit {
   @Input() detective: Detective;
-  @Input() detectives: Detective[];
 
   constructor(private detectiveService: DetectiveService) {}
 
   notEditMode = true;
   public editName(event, id) {
-    debugger;
     if (this.notEditMode) {
       this.notEditMode = false;
       document.getElementById(id).getElementsByClassName('edit')[0].innerHTML = 'save';

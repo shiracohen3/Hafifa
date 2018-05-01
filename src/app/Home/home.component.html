@@ -3,8 +3,12 @@
 
   <ul class="demo-list-three mdl-list">
     <div *ngFor="let detective of detectives">
-      <detective-details [detective]="detective" [detectives]="detectives">
+      <detective-details [detective]="detective">
       </detective-details>
+    </div>
+    <div *ngFor="let superDetective of superDetective">
+      <app-super-detective [detective]="superDetective">
+      </app-super-detective>
     </div>
   </ul>
 

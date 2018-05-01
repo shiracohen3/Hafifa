@@ -7,6 +7,9 @@ var Detective = /** @class */ (function () {
         this.spec = spec;
         this.cases = cases;
     }
+    Detective.prototype.timeForSolveCase = function () {
+        return 'regular';
+    };
     return Detective;
 }());
 exports.Detective = Detective;

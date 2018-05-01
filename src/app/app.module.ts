@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './Main/app.component';
-import { AddDetectiveComponent } from './Add_Detective/add-detective.component';
+import { AddDetectiveComponent } from './AddDetective/add-detective.component';
 import { DetectiveComponent } from './Detective/detective.component';
 import { CasesComponent } from './Case/cases.component';
 import { HomeComponent} from './Home/home.component';
@@ -12,8 +12,16 @@ import { MenuComponent} from './Menu/menu.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {DetectiveService} from "./Services/detective.service";
 import {CasesService} from "./Services/cases.service";
-import {SolveCaseComponent} from "./Case/solveCase.component";
-import {MatDialogModule} from '@angular/material';
+import {SolveCaseComponent} from "./SolveCase/solveCase.component";
+import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatButtonModule, MatCheckboxModule,
+  MatDialogActions,
+  MatDialogContent,
+  MatDialogModule, MatFormField, MatFormFieldModule, MatInputModule, MatOption, MatOptionModule, MatSelectModule
+} from '@angular/material';
+import {ForbiddenValidatorDirective} from "./SolveCase/forbiddenSolveCase.directive";
+import { SuperDetectiveComponent } from './SuperDetective/super-detective.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -29,7 +37,9 @@ const appRoutes: Routes = [
     DetectiveComponent,
     CasesComponent,
     MenuComponent,
-    SolveCaseComponent
+    ForbiddenValidatorDirective,
+    SolveCaseComponent,
+    SuperDetectiveComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -39,7 +49,13 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   entryComponents: [SolveCaseComponent],

@@ -1,0 +1,40 @@
+
+<form novalidate [formGroup]="form">
+  <h2 mat-dialog-title>פתרון תיק - {{currCase.name}}</h2>
+
+  <div mat-dialog-content>
+    <span>רמת הקושי של התיק היא: <strong>{{currCase.level}}</strong></span>
+    <mat-form-field>
+      <mat-select name="chooseDetective" placeholder="בחר בלש" formControlName="chooseDetectives" appForbiddenSolveCase={{currCase.level}} (change)="onChangeDetec()" [(ngModel)]="detectivesForCheck" multiple>
+        <mat-option *ngFor="let detective of detectives" [value]="detective">
+          {{detective.name}}
+          {{detective.cases}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="שם התיק" value="" formControlName="caseName">
+    </mat-form-field>
+  </div>
+  <div *ngIf="detectivesForCheck.length > 0">
+    הזמן שייקח לבלשים לפתור את התיק הוא: {{timeForSolveCase}} שעות
+  </div>
+
+
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="close()" mat-dialog-close>Close</button>
+    <button mat-raised-button type="submit" (click)="submit()" [disabled]="!form.valid">Solve!</button>
+
+    <mat-error *ngIf="form.get('caseName').hasError('required') || form.get('chooseDetectives').hasError('required')">
+      יש למלא את כל השדות
+    </mat-error>
+    <mat-error *ngIf="form.get('caseName').hasError('pattern')">
+      שם התיק אינו בפורמט הנכון
+    </mat-error>
+    <!--<mat-error *ngIf="form.get('chooseDetectives').hasError('ForbiddenValidatorDirective')">-->
+     <!--הבלשים שנבחרו אינם יכולים לפתור את התיק-->
+    <!--</mat-error>-->
+  </div>
+</form>
+
+

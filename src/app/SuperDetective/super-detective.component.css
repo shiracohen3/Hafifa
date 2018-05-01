@@ -1,6 +1,5 @@
 .container{
   position: relative;
-  margin: auto;
 }
 .actions{
   position: absolute;
@@ -9,6 +8,5 @@
 }
 .name{
   font-weight: bold;
-}
-.case{
+  color: yellow;
 }

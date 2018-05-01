@@ -1,4 +1,4 @@
-export class Detective {
+export class Detective{
   public id: number;
   public name: string;
   public spec: string;
@@ -11,4 +11,7 @@ export class Detective {
     this.cases = cases;
   }
 
+  public timeForSolveCase(level:number): number {
+    return (level/this.cases);
+  }
 }
