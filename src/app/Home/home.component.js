@@ -15,15 +15,16 @@ var superDetective_1 = require("../SuperDetective/superDetective");
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(detectiveService) {
         this.detectiveService = detectiveService;
+        this.detectives = [];
+        this.superDetectives = [];
         this.title = 'ברוכים הבאים לעולם הבלשים';
     }
     HomeComponent.prototype.getDetective = function () {
         var self = this;
-        this.detectiveService.getDetectives()
-            .subscribe(function (detectives) {
+        this.detectiveService.getDetectives().subscribe(function (detectives) {
             detectives.forEach(function (detective) {
                 if (detective instanceof superDetective_1.superDetective) {
-                    self.superDetective.push(detective);
+                    self.superDetectives.push(detective);
                 }
                 else {
                     self.detectives.push(detective);

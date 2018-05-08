@@ -34,6 +34,9 @@ var DetectiveComponent = /** @class */ (function () {
     DetectiveComponent.prototype.removeDetective = function (event, detectiveToRemove) {
         this.detectiveService.deleteDetective(detectiveToRemove).subscribe(function (success) { return alert("הבלש נמחק בהצלחה"); });
     };
+    DetectiveComponent.prototype.upgradeDetective = function (event, detectivetoUpgarde) {
+        this.detectiveService.upgrade(detectivetoUpgarde).subscribe(function (success) { return alert("הבלש שודרג בהצלחה!"); });
+    };
     DetectiveComponent.prototype.ngOnInit = function () { };
     __decorate([
         core_1.Input(),

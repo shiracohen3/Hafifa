@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Detective} from './Detective';
 import {DetectiveService} from "../Services/detective.service";
+import {isSuccess} from "@angular/http/src/http_utils";
 
 @Component({
   selector: 'detective-details',
@@ -30,6 +31,10 @@ export class DetectiveComponent implements OnInit {
 
   public removeDetective(event, detectiveToRemove) {
     this.detectiveService.deleteDetective(detectiveToRemove).subscribe(success => alert("הבלש נמחק בהצלחה"));
+  }
+
+  public upgradeDetective(event, detectivetoUpgarde) {
+    this.detectiveService.upgrade(detectivetoUpgarde).subscribe(success => alert("הבלש שודרג בהצלחה!"));
   }
 
   ngOnInit() {}

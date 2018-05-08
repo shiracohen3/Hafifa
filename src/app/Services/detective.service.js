@@ -15,7 +15,7 @@ var of_1 = require("rxjs/observable/of");
 var superDetective_1 = require("../SuperDetective/superDetective");
 var DetectiveService = /** @class */ (function () {
     function DetectiveService() {
-        this.detectives = [new Detective_1.Detective(1, 'חושחש הבלש', 'מעקב', 5),
+        this.detectives = [new Detective_1.Detective(1, 'חושחש הבלש', 'מעקב', 3),
             new Detective_1.Detective(2, 'הבלש הרלש', 'חדות הבחנה', 8),
             new Detective_1.Detective(3, 'שירה שירה', 'ניסיון', 12),
             new superDetective_1.superDetective(2, 'בלש כוכב', 'מיומנות אדירה', 20)];
@@ -46,6 +46,10 @@ var DetectiveService = /** @class */ (function () {
             }
         });
         return of_1.of(wasEdited);
+    };
+    DetectiveService.prototype.upgrade = function (detectiveToUpgrade) {
+        this.addDetective(new superDetective_1.superDetective(detectiveToUpgrade.id, detectiveToUpgrade.name, detectiveToUpgrade.spec, detectiveToUpgrade.cases));
+        return (this.deleteDetective(detectiveToUpgrade));
     };
     DetectiveService = __decorate([
         core_1.Injectable(),

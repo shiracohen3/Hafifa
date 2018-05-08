@@ -10,6 +10,8 @@
           {{detective.spec}}
           <br>
                 מספר המקרים שהבלש פתר: {{detective.cases}}
+          <br>
+          <button mat-raised-button color="primary" *ngIf="detective.cases > 4" (click)="upgradeDetective($event, detective)">שדרג בלש!</button>
           <div class="actions">
             <i class="material-icons edit" dir="ltr" (click)="editName($event, detective.id)">mode_edit</i>
             <i class="material-icons delete" dir="ltr" (click)="removeDetective($event, detective)">delete</i>

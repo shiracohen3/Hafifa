@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Detective} from '../Detective/Detective';
 import { DetectiveService } from '../Services/detective.service';
 import {superDetective} from "../SuperDetective/superDetective";
+import {SuperDetecPipe} from "../Pipes/SuperDetectiveFilter";
+import {DetectivePipe} from "../Pipes/DetectiveFilter";
+import {Observable} from "rxjs/Observable";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-home',
@@ -13,25 +17,25 @@ export class HomeComponent implements OnInit {
   constructor(private detectiveService: DetectiveService) {}
 
   detectives: Detective[] = [];
-  superDetective: superDetective[] = [];
+  superDetectives: superDetective[] = [];
   title = 'ברוכים הבאים לעולם הבלשים';
+
   getDetective(): void {
     let self = this;
-    this.detectiveService.getDetectives()
-      .subscribe(detectives => {
-          detectives.forEach(detective => {
-              if (detective instanceof superDetective) {
-                self.superDetective.push(detective);
-              }
-              else {
-                self.detectives.push(detective);
-              }
-          });
-      });
+    this.detectiveService.getDetectives().subscribe((detectives) => {
+      detectives.forEach(detective => {
+        if (detective instanceof superDetective) {
+          self.superDetectives.push(detective);
+        }
+        else {
+          self.detectives.push(detective);
+        }
+      })
+    });
   }
-
 
   ngOnInit() {
     this.getDetective();
   }
 }
+

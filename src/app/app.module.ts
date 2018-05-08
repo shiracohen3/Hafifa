@@ -22,6 +22,10 @@ import {
 } from '@angular/material';
 import {ForbiddenValidatorDirective} from "./SolveCase/forbiddenSolveCase.directive";
 import { SuperDetectiveComponent } from './SuperDetective/super-detective.component';
+import {SuperDetecPipe} from "./Pipes/SuperDetectiveFilter";
+import {DetectivePipe} from "./Pipes/DetectiveFilter";
+import {CommonModule} from "@angular/common";
+import { CalcSolveCaseTimeComponent } from './calc-solve-case-time/calc-solve-case-time.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -39,7 +43,10 @@ const appRoutes: Routes = [
     MenuComponent,
     ForbiddenValidatorDirective,
     SolveCaseComponent,
-    SuperDetectiveComponent
+    SuperDetectiveComponent,
+    SuperDetecPipe,
+    DetectivePipe,
+    CalcSolveCaseTimeComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -55,7 +62,8 @@ const appRoutes: Routes = [
     MatOptionModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    CommonModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   entryComponents: [SolveCaseComponent],

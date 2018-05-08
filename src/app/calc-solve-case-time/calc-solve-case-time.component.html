@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-select name="chooseDetective" placeholder="בחר בלש" formControlName="chooseForCheck" multiple (change)="onChange($event)" [(ngModel)]="detectivesForCheck">
+    <mat-option *ngFor="let detective of detectives" [value]="detective">
+      {{detective.name}}
+      {{detective.cases}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

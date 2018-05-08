@@ -16,7 +16,6 @@ var SolveCaseComponent = /** @class */ (function () {
     function SolveCaseComponent(dialogRef) {
         this.dialogRef = dialogRef;
         this.detectivesForCheck = [];
-        this.canSolveCase = false;
     }
     SolveCaseComponent.prototype.close = function () {
         this.dialogRef.close();
@@ -28,7 +27,8 @@ var SolveCaseComponent = /** @class */ (function () {
         this.form = new forms_1.FormGroup({
             caseName: new forms_1.FormControl(this.caseName, [forms_1.Validators.required, forms_1.Validators.pattern('\\w+-\\d+$')]),
             chooseDetectives: new forms_1.FormControl(this.chooseDetectives, [forms_1.Validators.required,
-                forms_1.Validators.maxLength(4)])
+                forms_1.Validators.maxLength(4)]),
+            detectiveSolveCase: new forms_1.FormControl('', forms_1.Validators.required)
         });
     };
     SolveCaseComponent = __decorate([

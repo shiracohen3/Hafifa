@@ -1,7 +1,10 @@
-import {ChangeDetectorRef, Component, Inject, Injectable, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, forwardRef, Inject, Injectable, OnInit} from '@angular/core';
 import { Case } from '../Case/Case';
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig, MatDialog, ErrorStateMatcher} from "@angular/material";
-import {FormGroup, FormBuilder, FormControl, Validators, FormGroupDirective, NgForm} from "@angular/forms";
+import {
+  FormGroup, FormBuilder, FormControl, Validators, FormGroupDirective, NgForm,
+  ControlValueAccessor, NG_VALUE_ACCESSOR, Validator
+} from "@angular/forms";
 import {Detective} from "../Detective/Detective";
 import {forbiddenSolveCaseValidator, ForbiddenValidatorDirective} from "./forbiddenSolveCase.directive";
 
@@ -13,20 +16,22 @@ import {forbiddenSolveCaseValidator, ForbiddenValidatorDirective} from "./forbid
 
 export class SolveCaseComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<any>) {}
   form: FormGroup;
   detectives: Detective[];
   currCase: Case;
   detectivesForCheck: Detective[] = [];
-  canSolveCase: boolean = false;
+  canSolveCase: boolean;
   caseName: string;
   chooseDetectives: Detective[];
   timeForSolveCase: number;
 
-  onChangeDetec(): void {
+  constructor(private dialogRef: MatDialogRef<any>) {}
+
+  onChangeDetec() {
     debugger;
     let self = this;
-    this.timeForSolveCase = this.detectivesForCheck.map(t => t.timeForSolveCase(self.currCase.level)).reduce((sum, currTime) => sum + currTime);
+    this.timeForSolveCase = this.detectivesForCheck.map(detec => detec.timeForSolveCase(self.currCase.level))
+                                                   .reduce((sum, currTime) => sum + currTime);
   }
 
   close() {
@@ -41,7 +46,8 @@ export class SolveCaseComponent implements OnInit {
     this.form = new FormGroup({
         caseName: new FormControl(this.caseName, [ Validators.required, Validators.pattern('\\w+-\\d+$')]),
         chooseDetectives: new FormControl(this.chooseDetectives, [Validators.required,
-          Validators.maxLength(4)])
+          Validators.maxLength(4)]),
+        chooseForCheck: new FormControl(this.chooseDetectives, Validators.required)
     });
   }
 }

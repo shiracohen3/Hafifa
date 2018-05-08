@@ -16,8 +16,8 @@ var superDetective = /** @class */ (function (_super) {
     function superDetective(superId, superName, superSpec, superCases) {
         return _super.call(this, superId, superName, superSpec, superCases) || this;
     }
-    superDetective.prototype.timeForSolveCase = function () {
-        return 'suuper';
+    superDetective.prototype.timeForSolveCase = function (level) {
+        return (level / this.cases) / 2;
     };
     return superDetective;
 }(Detective_1.Detective));

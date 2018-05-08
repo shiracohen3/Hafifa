@@ -10,7 +10,7 @@ import {superDetective} from "../SuperDetective/superDetective";
 export class DetectiveService {
   private detectives: Detective[];
   constructor() {
-    this.detectives = [ new Detective(1, 'חושחש הבלש', 'מעקב', 5),
+    this.detectives = [ new Detective(1, 'חושחש הבלש', 'מעקב', 3),
       new Detective(2, 'הבלש הרלש', 'חדות הבחנה', 8),
       new Detective(3, 'שירה שירה', 'ניסיון', 12),
       new superDetective(2, 'בלש כוכב', 'מיומנות אדירה', 20)];
@@ -41,5 +41,12 @@ export class DetectiveService {
       }
     })
     return of (wasEdited);
+  }
+  upgrade(detectiveToUpgrade: Detective): Observable<boolean> {
+    this.addDetective(new superDetective(detectiveToUpgrade.id,
+                                         detectiveToUpgrade.name,
+                                         detectiveToUpgrade.spec,
+                                         detectiveToUpgrade.cases));
+    return (this.deleteDetective(detectiveToUpgrade));
   }
 }

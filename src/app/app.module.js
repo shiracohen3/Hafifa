@@ -23,6 +23,10 @@ var solveCase_component_1 = require("./SolveCase/solveCase.component");
 var material_1 = require("@angular/material");
 var forbiddenSolveCase_directive_1 = require("./SolveCase/forbiddenSolveCase.directive");
 var super_detective_component_1 = require("./SuperDetective/super-detective.component");
+var SuperDetectiveFilter_1 = require("./Pipes/SuperDetectiveFilter");
+var DetectiveFilter_1 = require("./Pipes/DetectiveFilter");
+var common_1 = require("@angular/common");
+var calc_solve_case_time_component_1 = require("./calc-solve-case-time/calc-solve-case-time.component");
 var appRoutes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'cases', component: cases_component_1.CasesComponent },
@@ -42,7 +46,10 @@ var AppModule = /** @class */ (function () {
                 menu_component_1.MenuComponent,
                 forbiddenSolveCase_directive_1.ForbiddenValidatorDirective,
                 solveCase_component_1.SolveCaseComponent,
-                super_detective_component_1.SuperDetectiveComponent
+                super_detective_component_1.SuperDetectiveComponent,
+                SuperDetectiveFilter_1.SuperDetecPipe,
+                DetectiveFilter_1.DetectivePipe,
+                calc_solve_case_time_component_1.CalcSolveCaseTimeComponent
             ],
             imports: [
                 router_1.RouterModule.forRoot(appRoutes),
@@ -56,7 +63,8 @@ var AppModule = /** @class */ (function () {
                 material_1.MatOptionModule,
                 material_1.MatButtonModule,
                 material_1.MatCheckboxModule,
-                material_1.MatInputModule
+                material_1.MatInputModule,
+                common_1.CommonModule
             ],
             schemas: [core_1.CUSTOM_ELEMENTS_SCHEMA],
             entryComponents: [solveCase_component_1.SolveCaseComponent],

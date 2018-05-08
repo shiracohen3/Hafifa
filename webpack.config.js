@@ -13,7 +13,10 @@ module.exports = {
   },
 
   // create a map file for debugging
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
+    resolve: {
+      extensions: ['', 'webpack.js', '.web.js', '.ts', '.js']
+    },
 
   // configure the loaders
   module: {
